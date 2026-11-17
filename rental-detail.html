@@ -3,137 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Detail peminjaman game di SewaGame - Lihat status dan link akses game Anda.">
-    <title>Detail Peminjaman - SewaGame</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <meta name="description" content="Detail peminjaman game di SewaGame.">
+    <meta name="theme-color" content="#0f172a">
+    <title>Detail Peminjaman #RENT-00042 - SewaGame</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3 & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="d-flex flex-column min-vh-100 pt-5 bg-light">
+<body class="d-flex flex-column min-vh-100">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="home.html">
-            <i class="bi bi-controller"></i> SewaGame
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="products.html">Produk</a></li>
-                <li class="nav-item">
-                    <a class="nav-link position-relative" href="cart.html">
-                        <i class="bi bi-cart3"></i> Cart
-                        <span class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-danger">3</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="rentals.html"><i class="bi bi-calendar-check"></i> Peminjaman</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                        User Demo <span class="badge bg-info">Pembeli</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a href="index.html" class="dropdown-item text-danger"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<main class="flex-grow-1">
-    <div class="container py-4 page-content">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="home.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="rentals.html">Peminjaman</a></li>
-                <li class="breadcrumb-item active">GTA V Premium Edition</li>
-            </ol>
-        </nav>
-
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <div class="card shadow">
-                    <div class="card-body p-4">
-                        <h2 class="card-title mb-3">GTA V Premium Edition</h2>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <strong>Tanggal Mulai:</strong><br>
-                                10 Juni 2024
-                            </div>
-                            <div class="col-md-6">
-                                <strong>Tanggal Selesai:</strong><br>
-                                17 Juni 2024
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <span class="badge bg-success fs-6">Aktif</span>
-                            <span class="badge bg-success fs-6">Lunas</span>
-                        </div>
-
-                        <hr>
-                        <h5><i class="bi bi-download"></i> Link Download/Akses</h5>
-                        <p class="text-muted">Akses aktif sampai 17 Juni 2024</p>
-
-                        <div class="d-flex flex-wrap gap-2">
-                            <a href="#" target="_blank" class="btn btn-dark">
-                                <i class="bi bi-github"></i> GitHub
-                            </a>
-                            <a href="#" target="_blank" class="btn btn-outline-secondary">
-                                <i class="bi bi-link-45deg"></i> Itch.io
-                            </a>
-                        </div>
-
-                        <hr>
-                        <a href="rentals.html" class="btn btn-secondary">
-                            <i class="bi bi-arrow-left"></i> Kembali ke Riwayat
+    <!-- Modern Fixed Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="home.html">
+                <span class="brand-icon-box"><i class="bi bi-controller"></i></span>
+                <span>Sewa<span>Game</span></span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Katalog Produk</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="rentals.html">Riwayat Sewa</a></li>
+                </ul>
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-2 pt-2 pt-lg-0">
+                    <li class="nav-item me-lg-2">
+                        <a class="nav-link d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill bg-white bg-opacity-10 text-white" href="cart.html">
+                            <i class="bi bi-bag"></i>
+                            <span>Keranjang</span>
+                            <span class="cart-pill-badge">3</span>
                         </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-inline-flex align-items-center gap-2 text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="user-avatar-circle">U</span>
+                            <span class="fw-semibold">User Demo</span>
+                            <span class="badge-subtle badge-subtle-info">Pembeli</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-custom dropdown-menu-end shadow-lg mt-2">
+                            <li class="px-3 py-2 border-bottom mb-1">
+                                <small class="text-muted d-block">Login sebagai</small>
+                                <strong class="text-truncate d-block">pembeli@sewagame.com</strong>
+                            </li>
+                            <li><a class="dropdown-item" href="rentals.html"><i class="bi bi-clock-history me-2"></i> Riwayat Sewa</a></li>
+                            <li><a class="dropdown-item" href="cart.html"><i class="bi bi-bag me-2"></i> Keranjang</a></li>
+                            <li><hr class="dropdown-divider my-1"></li>
+                            <li><a href="index.html" class="dropdown-item text-danger d-flex align-items-center"><i class="bi bi-box-arrow-right me-2"></i> Keluar</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content Spacing -->
+    <div style="height: 76px;"></div>
+
+    <!-- Main Content -->
+    <main class="flex-grow-1">
+        <div class="container py-4 py-lg-5">
+            <!-- Breadcrumb -->
+            <ul class="breadcrumb-custom">
+                <li><a href="home.html">Beranda</a></li>
+                <li><a href="rentals.html">Riwayat Peminjaman</a></li>
+                <li class="active">Detail #RENT-00042</li>
+            </ul>
+
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="card card-clean p-4 p-md-5">
+                        <!-- Header -->
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start gap-3 pb-4 mb-4 border-bottom">
+                            <div>
+                                <span class="badge-subtle badge-subtle-primary mb-2">Peminjaman Game</span>
+                                <h3 class="fw-bold mb-1">GTA V Premium Edition</h3>
+                                <small class="text-muted">Kode Transaksi: #RENT-00042</small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <span class="badge-subtle badge-subtle-success fs-7 px-3 py-2">
+                                    <i class="bi bi-check-circle-fill"></i> Aktif Berjalan
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Timeline / Duration -->
+                        <div class="p-3 rounded-3 bg-light mb-4">
+                            <div class="row g-3 text-center">
+                                <div class="col-6 border-end">
+                                    <span class="text-muted small d-block">Tanggal Mulai</span>
+                                    <span class="fw-bold text-dark">17 November 2026</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="text-muted small d-block">Tanggal Berakhir</span>
+                                    <span class="fw-bold text-primary">24 November 2026 (7 Hari)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Access Links Section -->
+                        <div class="p-4 rounded-3 mb-4" style="background-color: var(--sg-primary-light); border: 1px solid rgba(79, 70, 229, 0.2);">
+                            <h5 class="fw-bold text-dark mb-2 d-flex align-items-center gap-2">
+                                <i class="bi bi-unlock-fill text-success"></i> Link Akses & Download Resmi
+                            </h5>
+                            <p class="text-muted small mb-3">
+                                Akses unduhan aktif dan valid sampai dengan <strong>24 November 2026</strong>.
+                            </p>
+
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="https://github.com/example/gtav-build" target="_blank" class="btn btn-dark btn-sm px-3">
+                                    <i class="bi bi-github me-1"></i> Buka Repository GitHub
+                                </a>
+                                <a href="https://itch.io" target="_blank" class="btn btn-outline-primary btn-sm px-3 bg-white">
+                                    <i class="bi bi-link-45deg me-1"></i> Buka Halaman Itch.io
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Product Summary -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold text-uppercase fs-7 text-muted tracking-wider mb-2">Tentang Produk</h6>
+                            <p class="text-secondary small mb-0" style="line-height: 1.7;">
+                                Grand Theft Auto V menyajikan pengalaman gameplay open world terbaik di Los Santos. Paket sewa ini mencakup build permainan resmi yang terverifikasi dan siap dimainkan.
+                            </p>
+                        </div>
+
+                        <!-- Action -->
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                            <a href="rentals.html" class="btn btn-light-custom btn-sm">
+                                <i class="bi bi-arrow-left"></i> Kembali ke Riwayat
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
-<footer class="bg-dark text-light py-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h5>SewaGame - Penyewaan Aplikasi Game & Android</h5>
-                <p class="mb-0">Platform penyewaan aplikasi game dan Android secara online dengan harga terjangkau.</p>
-            </div>
-            <div class="col-md-3">
-                <h6>Kontak</h6>
-                <ul class="list-unstyled mb-0">
-                    <li><i class="bi bi-envelope"></i> support@sewagame.com</li>
-                    <li><i class="bi bi-whatsapp"></i> +62 812-3456-7890</li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h6>Ikuti Kami</h6>
-                <div class="d-flex gap-2">
-                    <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
-                    <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
-                    <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
-                </div>
-            </div>
+    <!-- Modern Professional Footer -->
+    <footer class="footer-custom pt-5 pb-4 mt-auto">
+        <div class="container text-center small text-secondary">
+            <div>&copy; 2026 SewaGame. Seluruh hak cipta dilindungi undang-undang.</div>
         </div>
-        <hr class="my-3">
-        <div class="text-center">
-            <small>&copy; 2024 SewaGame. All Rights Reserved.</small>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/app.js"></script>
+    <!-- Bootstrap JS & App JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

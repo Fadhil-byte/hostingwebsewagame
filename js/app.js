@@ -1,165 +1,145 @@
+// ==========================================================================
+// SewaGame - Interactive Client-Side JavaScript
+// ==========================================================================
+
 document.addEventListener('DOMContentLoaded', function() {
-    // ========== Navbar Scroll Effect ==========
-    const navbar = document.querySelector('.navbar');
+    // 1. Navbar Scroll Effect
+    const navbar = document.querySelector('.navbar-custom');
     if (navbar) {
-        const handleNavbarScroll = function() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-lg');
-                navbar.style.padding = '0.5rem 0';
+        const handleScroll = function() {
+            if (window.scrollY > 30) {
+                navbar.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.3)';
+                navbar.style.paddingTop = '0.65rem';
+                navbar.style.paddingBottom = '0.65rem';
             } else {
-                navbar.classList.remove('shadow-lg');
-                navbar.style.padding = '0.75rem 0';
+                navbar.style.boxShadow = 'none';
+                navbar.style.paddingTop = '0.85rem';
+                navbar.style.paddingBottom = '0.85rem';
             }
         };
-        window.addEventListener('scroll', handleNavbarScroll);
-        handleNavbarScroll();
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
     }
 
-    // ========== Feature Cards Animation ==========
-    const featureCards = document.querySelectorAll('.feature-card');
-    featureCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        card.style.transitionDelay = (index * 150) + 'ms';
+    // 2. Product Category Filter & Search (products.html)
+    const categoryButtons = document.querySelectorAll('[data-category-filter]');
+    const productItems = document.querySelectorAll('[data-product-item]');
+    const searchInput = document.getElementById('productSearchInput');
 
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
+    function filterProducts() {
+        const activeBtn = document.querySelector('[data-category-filter].btn-primary');
+        const selectedCategory = activeBtn ? activeBtn.getAttribute('data-category-filter') : 'all';
+        const searchKeyword = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        let visibleCount = 0;
+
+        productItems.forEach(item => {
+            const itemCategory = item.getAttribute('data-category') || '';
+            const itemName = (item.querySelector('.product-name') ? item.querySelector('.product-name').textContent : '').toLowerCase();
+            const itemDesc = (item.querySelector('.product-desc') ? item.querySelector('.product-desc').textContent : '').toLowerCase();
+
+            const matchesCategory = (selectedCategory === 'all' || itemCategory === selectedCategory);
+            const matchesSearch = (!searchKeyword || itemName.includes(searchKeyword) || itemDesc.includes(searchKeyword));
+
+            if (matchesCategory && matchesSearch) {
+                item.style.display = '';
+                visibleCount++;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+
+        const emptyState = document.getElementById('productsEmptyState');
+        if (emptyState) {
+            emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+    }
+
+    if (categoryButtons.length > 0) {
+        categoryButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                categoryButtons.forEach(b => {
+                    b.classList.remove('btn-primary');
+                    b.classList.add('btn-light-custom');
+                });
+                this.classList.remove('btn-light-custom');
+                this.classList.add('btn-primary');
+                filterProducts();
             });
-        }, { threshold: 0.1 });
+        });
+    }
 
-        observer.observe(card);
+    if (searchInput) {
+        searchInput.addEventListener('input', filterProducts);
+    }
+
+    // 3. Cart Removal Simulation & Total Recalculation (cart.html)
+    const deleteCartButtons = document.querySelectorAll('.btn-delete-cart-item');
+    deleteCartButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('Hapus produk ini dari keranjang belanja?')) {
+                const row = this.closest('tr');
+                if (row) {
+                    row.remove();
+                    updateCartTotals();
+                }
+            }
+        });
     });
 
-    // ========== Step Circles Animation ==========
-    const stepCircles = document.querySelectorAll('.step-circle');
-    stepCircles.forEach((circle, index) => {
-        circle.style.opacity = '0';
-        circle.style.transform = 'scale(0.8)';
-        circle.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    function updateCartTotals() {
+        const rows = document.querySelectorAll('tbody tr[data-price]');
+        let total = 0;
+        rows.forEach(row => {
+            const price = parseInt(row.getAttribute('data-price') || 0, 10);
+            total += price;
+        });
 
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'scale(1)';
-                    }, index * 100);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
+        const totalDisplays = document.querySelectorAll('.cart-total-price');
+        totalDisplays.forEach(el => {
+            el.textContent = 'Rp ' + total.toLocaleString('id-ID');
+        });
 
-        observer.observe(circle);
-    });
+        const countDisplays = document.querySelectorAll('.cart-count-display');
+        countDisplays.forEach(el => {
+            el.textContent = rows.length + ' Produk';
+        });
 
-    // ========== Smooth Scroll for anchor links ==========
-    const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
-    smoothScrollLinks.forEach(link => {
+        const badgeCounter = document.querySelector('.cart-pill-badge');
+        if (badgeCounter) {
+            badgeCounter.textContent = rows.length;
+            if (rows.length === 0) {
+                badgeCounter.style.display = 'none';
+            }
+        }
+
+        if (rows.length === 0) {
+            const cartContent = document.getElementById('cartContentSection');
+            const cartEmpty = document.getElementById('cartEmptySection');
+            if (cartContent) cartContent.style.display = 'none';
+            if (cartEmpty) cartEmpty.style.display = 'block';
+        }
+    }
+
+    // 4. Smooth Anchor Scroll
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            if (targetId === '#' || !targetId) return;
 
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
-                const navbarHeight = navbar ? navbar.offsetHeight : 0;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                const navOffset = navbar ? navbar.offsetHeight : 0;
+                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navOffset;
 
                 window.scrollTo({
-                    top: targetPosition,
+                    top: elementPosition,
                     behavior: 'smooth'
                 });
             }
         });
     });
-
-    // ========== Stat Cards Animation ==========
-    const statCards = document.querySelectorAll('.stats-users, .stats-products, .stats-active, .stats-revenue');
-    statCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        card.style.transitionDelay = (index * 150) + 'ms';
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        observer.observe(card);
-    });
-
-    // ========== Product Cards Animation ==========
-    const productCards = document.querySelectorAll('.product-card');
-    productCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        card.style.transitionDelay = (index * 100) + 'ms';
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        observer.observe(card);
-    });
-
-    // ========== Delete from cart confirmation ==========
-    const deleteButtons = document.querySelectorAll('.btn-delete-cart');
-    deleteButtons.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            if (!confirm('Hapus produk ini dari keranjang?')) {
-                e.preventDefault();
-            }
-        });
-    });
-
-    // ========== Checkout confirmation ==========
-    const checkoutBtn = document.querySelector('.btn-checkout-confirm');
-    if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', function(e) {
-            if (!confirm('Konfirmasi peminjaman?')) {
-                e.preventDefault();
-            }
-        });
-    }
-
-    // ========== Alert auto-dismiss ==========
-    const alerts = document.querySelectorAll('.alert-dismissible');
-    alerts.forEach(alert => {
-        setTimeout(() => {
-            const closeBtn = alert.querySelector('.btn-close');
-            if (closeBtn) closeBtn.click();
-        }, 5000);
-    });
-
-    // ========== Page content fade in ==========
-    const pageContent = document.querySelector('.page-content');
-    if (pageContent) {
-        pageContent.style.opacity = '0';
-        pageContent.style.transform = 'translateY(15px)';
-        pageContent.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        
-        requestAnimationFrame(() => {
-            pageContent.style.opacity = '1';
-            pageContent.style.transform = 'translateY(0)';
-        });
-    }
 });

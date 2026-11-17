@@ -4,241 +4,379 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Katalog produk game dan aplikasi Android yang tersedia untuk disewa di SewaGame.">
+    <meta name="theme-color" content="#0f172a">
     <title>Katalog Produk - SewaGame</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3 & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="d-flex flex-column min-vh-100 pt-5 bg-light">
+<body class="d-flex flex-column min-vh-100">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="home.html">
-            <i class="bi bi-controller"></i> SewaGame
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="home.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="products.html">Produk</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link position-relative" href="cart.html">
-                        <i class="bi bi-cart3"></i> Cart
-                        <span class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-danger">3</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="rentals.html">
-                        <i class="bi bi-calendar-check"></i> Peminjaman
-                    </a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                        User Demo <span class="badge bg-info">Pembeli</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a href="index.html" class="dropdown-item text-danger"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<main class="flex-grow-1">
-    <div class="container py-4 page-content">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="mb-0"><i class="bi bi-grid-3x3-gap-fill"></i> Katalog Produk</h2>
-            <form class="d-flex">
-                <input class="form-control form-control-sm me-2" type="search" name="search" placeholder="Cari produk...">
-                <button class="btn btn-primary btn-sm" type="submit">
-                    <i class="bi bi-search"></i>
-                </button>
-            </form>
-        </div>
-
-        <div class="row g-4">
-            <!-- Product 1 -->
-            <div class="col-md-4 col-sm-6">
-                <div class="card h-100 shadow-sm border-0 product-card" onclick="window.location='product-detail.html'">
-                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 220px;">
-                        <i class="bi bi-controller fs-1 text-primary"></i>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-truncate">GTA V Premium Edition</h5>
-                        <span class="badge bg-info mb-2 align-self-start">Game</span>
-                        <p class="card-text text-muted small flex-grow-1">Game open world terbaik dengan grafis memukau dan cerita yang seru...</p>
-                        <div class="mb-2">
-                            <span class="badge bg-danger fs-6">Rp 15.000</span>
-                            <small class="text-muted">/minggu</small>
-                        </div>
-                        <a href="cart.html" class="btn btn-primary btn-sm w-100" onclick="event.stopPropagation();">
-                            <i class="bi bi-cart-plus"></i> Tambah ke Keranjang
+    <!-- Modern Fixed Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="home.html">
+                <span class="brand-icon-box"><i class="bi bi-controller"></i></span>
+                <span>Sewa<span>Game</span></span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="products.html">Katalog Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rentals.html">Riwayat Sewa</a></li>
+                </ul>
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-2 pt-2 pt-lg-0">
+                    <li class="nav-item me-lg-2">
+                        <a class="nav-link d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill bg-white bg-opacity-10 text-white" href="cart.html">
+                            <i class="bi bi-bag"></i>
+                            <span>Keranjang</span>
+                            <span class="cart-pill-badge">3</span>
                         </a>
-                    </div>
-                    <div class="card-footer bg-white border-top">
-                        <small class="text-muted"><i class="bi bi-calendar3"></i> Sewa 7 Hari</small>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 2 -->
-            <div class="col-md-4 col-sm-6">
-                <div class="card h-100 shadow-sm border-0 product-card" onclick="window.location='product-detail.html'">
-                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 220px;">
-                        <i class="bi bi-phone fs-1 text-success"></i>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-truncate">Minecraft Java Edition</h5>
-                        <span class="badge bg-info mb-2 align-self-start">Game</span>
-                        <p class="card-text text-muted small flex-grow-1">Game sandbox paling populer di dunia. Bangun dunia impianmu tanpa batas...</p>
-                        <div class="mb-2">
-                            <span class="badge bg-danger fs-6">Rp 10.000</span>
-                            <small class="text-muted">/minggu</small>
-                        </div>
-                        <a href="cart.html" class="btn btn-primary btn-sm w-100" onclick="event.stopPropagation();">
-                            <i class="bi bi-cart-plus"></i> Tambah ke Keranjang
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-inline-flex align-items-center gap-2 text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="user-avatar-circle">U</span>
+                            <span class="fw-semibold">User Demo</span>
+                            <span class="badge-subtle badge-subtle-info">Pembeli</span>
                         </a>
-                    </div>
-                    <div class="card-footer bg-white border-top">
-                        <small class="text-muted"><i class="bi bi-calendar3"></i> Sewa 7 Hari</small>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 3 -->
-            <div class="col-md-4 col-sm-6">
-                <div class="card h-100 shadow-sm border-0 product-card" onclick="window.location='product-detail.html'">
-                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 220px;">
-                        <i class="bi bi-joystick fs-1 text-warning"></i>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-truncate">Elden Ring</h5>
-                        <span class="badge bg-info mb-2 align-self-start">Game</span>
-                        <p class="card-text text-muted small flex-grow-1">Game RPG aksi open-world dari FromSoftware dengan dunia yang luas...</p>
-                        <div class="mb-2">
-                            <span class="badge bg-danger fs-6">Rp 20.000</span>
-                            <small class="text-muted">/minggu</small>
-                        </div>
-                        <a href="cart.html" class="btn btn-primary btn-sm w-100" onclick="event.stopPropagation();">
-                            <i class="bi bi-cart-plus"></i> Tambah ke Keranjang
-                        </a>
-                    </div>
-                    <div class="card-footer bg-white border-top">
-                        <small class="text-muted"><i class="bi bi-calendar3"></i> Sewa 7 Hari</small>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 4 -->
-            <div class="col-md-4 col-sm-6">
-                <div class="card h-100 shadow-sm border-0 product-card" onclick="window.location='product-detail.html'">
-                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 220px;">
-                        <i class="bi bi-headset fs-1 text-danger"></i>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-truncate">Valorant Premium Account</h5>
-                        <span class="badge bg-info mb-2 align-self-start">Game</span>
-                        <p class="card-text text-muted small flex-grow-1">Akun premium Valorant dengan skin lengkap dan semua agent terbuka...</p>
-                        <div class="mb-2">
-                            <span class="badge bg-danger fs-6">Rp 25.000</span>
-                            <small class="text-muted">/minggu</small>
-                        </div>
-                        <a href="cart.html" class="btn btn-primary btn-sm w-100" onclick="event.stopPropagation();">
-                            <i class="bi bi-cart-plus"></i> Tambah ke Keranjang
-                        </a>
-                    </div>
-                    <div class="card-footer bg-white border-top">
-                        <small class="text-muted"><i class="bi bi-calendar3"></i> Sewa 7 Hari</small>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 5 -->
-            <div class="col-md-4 col-sm-6">
-                <div class="card h-100 shadow-sm border-0 product-card" onclick="window.location='product-detail.html'">
-                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 220px;">
-                        <i class="bi bi-stars fs-1 text-purple" style="color: #8b5cf6;"></i>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-truncate">Spotify Premium APK</h5>
-                        <span class="badge bg-success mb-2 align-self-start">Android</span>
-                        <p class="card-text text-muted small flex-grow-1">Akun Spotify Premium resmi untuk streaming musik tanpa iklan...</p>
-                        <div class="mb-2">
-                            <span class="badge bg-danger fs-6">Rp 8.000</span>
-                            <small class="text-muted">/minggu</small>
-                        </div>
-                        <a href="cart.html" class="btn btn-primary btn-sm w-100" onclick="event.stopPropagation();">
-                            <i class="bi bi-cart-plus"></i> Tambah ke Keranjang
-                        </a>
-                    </div>
-                    <div class="card-footer bg-white border-top">
-                        <small class="text-muted"><i class="bi bi-calendar3"></i> Sewa 7 Hari</small>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 6 -->
-            <div class="col-md-4 col-sm-6">
-                <div class="card h-100 shadow-sm border-0 product-card" onclick="window.location='product-detail.html'">
-                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 220px;">
-                        <i class="bi bi-film fs-1 text-info"></i>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-truncate">Netflix Premium Account</h5>
-                        <span class="badge bg-success mb-2 align-self-start">Android</span>
-                        <p class="card-text text-muted small flex-grow-1">Akun Netflix Premium 4K untuk streaming film dan series favorit...</p>
-                        <div class="mb-2">
-                            <span class="badge bg-danger fs-6">Rp 12.000</span>
-                            <small class="text-muted">/minggu</small>
-                        </div>
-                        <a href="cart.html" class="btn btn-primary btn-sm w-100" onclick="event.stopPropagation();">
-                            <i class="bi bi-cart-plus"></i> Tambah ke Keranjang
-                        </a>
-                    </div>
-                    <div class="card-footer bg-white border-top">
-                        <small class="text-muted"><i class="bi bi-calendar3"></i> Sewa 7 Hari</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
-
-<footer class="bg-dark text-light py-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h5>SewaGame - Penyewaan Aplikasi Game & Android</h5>
-                <p class="mb-0">Platform penyewaan aplikasi game dan Android secara online dengan harga terjangkau.</p>
-            </div>
-            <div class="col-md-3">
-                <h6>Kontak</h6>
-                <ul class="list-unstyled mb-0">
-                    <li><i class="bi bi-envelope"></i> support@sewagame.com</li>
-                    <li><i class="bi bi-whatsapp"></i> +62 812-3456-7890</li>
+                        <ul class="dropdown-menu dropdown-menu-custom dropdown-menu-end shadow-lg mt-2">
+                            <li class="px-3 py-2 border-bottom mb-1">
+                                <small class="text-muted d-block">Login sebagai</small>
+                                <strong class="text-truncate d-block">pembeli@sewagame.com</strong>
+                            </li>
+                            <li><a class="dropdown-item" href="rentals.html"><i class="bi bi-clock-history me-2"></i> Riwayat Sewa</a></li>
+                            <li><a class="dropdown-item" href="cart.html"><i class="bi bi-bag me-2"></i> Keranjang</a></li>
+                            <li><hr class="dropdown-divider my-1"></li>
+                            <li><a href="index.html" class="dropdown-item text-danger d-flex align-items-center"><i class="bi bi-box-arrow-right me-2"></i> Keluar</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
-            <div class="col-md-3">
-                <h6>Ikuti Kami</h6>
-                <div class="d-flex gap-2">
-                    <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
-                    <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
-                    <a href="#" class="text-light"><i class="bi bi-youtube fs-5"></i></a>
+        </div>
+    </nav>
+
+    <!-- Page Content Spacing -->
+    <div style="height: 76px;"></div>
+
+    <!-- Main Content -->
+    <main class="flex-grow-1">
+        <div class="container py-4 py-lg-5">
+            <!-- Breadcrumb -->
+            <ul class="breadcrumb-custom">
+                <li><a href="home.html">Beranda</a></li>
+                <li class="active">Katalog Produk</li>
+            </ul>
+
+            <!-- Header & Controls -->
+            <div class="card card-clean p-4 mb-4">
+                <div class="row g-3 align-items-center justify-content-between">
+                    <div class="col-12 col-md-5">
+                        <h3 class="fw-bold mb-1">Katalog Game & Aplikasi</h3>
+                        <p class="text-muted small mb-0">Temukan koleksi game dan aplikasi premium siap sewa dengan lisensi resmi.</p>
+                    </div>
+
+                    <!-- Search Form -->
+                    <div class="col-12 col-md-7 col-lg-6">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0 text-muted">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <input class="form-control border-start-0 ps-0" type="search" id="productSearchInput" placeholder="Cari judul game atau aplikasi...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="d-flex flex-wrap gap-2 pt-3 mt-3 border-top">
+                    <button class="btn btn-sm btn-primary rounded-pill px-3" data-category-filter="all">
+                        <i class="bi bi-grid-fill"></i> Semua (6)
+                    </button>
+                    <button class="btn btn-sm btn-light-custom rounded-pill px-3" data-category-filter="game">
+                        <i class="bi bi-controller"></i> Game PC
+                    </button>
+                    <button class="btn btn-sm btn-light-custom rounded-pill px-3" data-category-filter="android">
+                        <i class="bi bi-phone"></i> Android Apps
+                    </button>
                 </div>
             </div>
-        </div>
-        <hr class="my-3">
-        <div class="text-center">
-            <small>&copy; 2024 SewaGame. All Rights Reserved.</small>
-        </div>
-    </div>
-</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/app.js"></script>
+            <!-- Product Grid -->
+            <div class="row g-3 g-md-4 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 mb-4" id="productGridContainer">
+                <!-- Product 1 -->
+                <div class="col" data-product-item data-category="game">
+                    <div class="product-card">
+                        <div class="product-thumb-wrapper d-flex align-items-center justify-content-center bg-light">
+                            <i class="bi bi-controller fs-1 text-primary opacity-75"></i>
+                            <div class="product-badge-overlay">
+                                <span class="badge-subtle badge-subtle-primary">
+                                    <i class="bi bi-controller"></i> Game PC
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3 d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mb-1 text-truncate product-name" title="GTA V Premium Edition">
+                                <a href="product-detail.html" class="text-dark">GTA V Premium Edition</a>
+                            </h5>
+                            <p class="text-muted small flex-grow-1 mb-3 product-desc" style="line-height: 1.5;">
+                                Game open-world terbaik dengan grafis memukau dan petualangan seru tanpa batas.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-baseline mb-3">
+                                <div>
+                                    <span class="product-price-tag">Rp 35.000</span>
+                                    <span class="product-price-duration">/ 7 hari</span>
+                                </div>
+                                <span class="badge-subtle badge-subtle-dark">1 Minggu</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="product-detail.html" class="btn btn-light-custom btn-sm flex-grow-1">Detail</a>
+                                <a href="cart.html" class="btn btn-primary btn-sm flex-grow-1"><i class="bi bi-cart-plus"></i> + Sewa</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col" data-product-item data-category="game">
+                    <div class="product-card">
+                        <div class="product-thumb-wrapper d-flex align-items-center justify-content-center bg-light">
+                            <i class="bi bi-controller fs-1 text-primary opacity-75"></i>
+                            <div class="product-badge-overlay">
+                                <span class="badge-subtle badge-subtle-primary">
+                                    <i class="bi bi-controller"></i> Game PC
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3 d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mb-1 text-truncate product-name" title="Cyberpunk 2077">
+                                <a href="product-detail.html" class="text-dark">Cyberpunk 2077</a>
+                            </h5>
+                            <p class="text-muted small flex-grow-1 mb-3 product-desc" style="line-height: 1.5;">
+                                RPG aksi futuristik di kota metropolitan Night City dengan alur cerita mendalam.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-baseline mb-3">
+                                <div>
+                                    <span class="product-price-tag">Rp 45.000</span>
+                                    <span class="product-price-duration">/ 7 hari</span>
+                                </div>
+                                <span class="badge-subtle badge-subtle-dark">1 Minggu</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="product-detail.html" class="btn btn-light-custom btn-sm flex-grow-1">Detail</a>
+                                <a href="cart.html" class="btn btn-primary btn-sm flex-grow-1"><i class="bi bi-cart-plus"></i> + Sewa</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col" data-product-item data-category="game">
+                    <div class="product-card">
+                        <div class="product-thumb-wrapper d-flex align-items-center justify-content-center bg-light">
+                            <i class="bi bi-joystick fs-1 text-warning opacity-75"></i>
+                            <div class="product-badge-overlay">
+                                <span class="badge-subtle badge-subtle-primary">
+                                    <i class="bi bi-controller"></i> Game PC
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3 d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mb-1 text-truncate product-name" title="Elden Ring">
+                                <a href="product-detail.html" class="text-dark">Elden Ring</a>
+                            </h5>
+                            <p class="text-muted small flex-grow-1 mb-3 product-desc" style="line-height: 1.5;">
+                                Game RPG aksi open-world dari FromSoftware dengan dunia fantasi luas dan bos menantang.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-baseline mb-3">
+                                <div>
+                                    <span class="product-price-tag">Rp 40.000</span>
+                                    <span class="product-price-duration">/ 7 hari</span>
+                                </div>
+                                <span class="badge-subtle badge-subtle-dark">1 Minggu</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="product-detail.html" class="btn btn-light-custom btn-sm flex-grow-1">Detail</a>
+                                <a href="cart.html" class="btn btn-primary btn-sm flex-grow-1"><i class="bi bi-cart-plus"></i> + Sewa</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="col" data-product-item data-category="game">
+                    <div class="product-card">
+                        <div class="product-thumb-wrapper d-flex align-items-center justify-content-center bg-light">
+                            <i class="bi bi-headset fs-1 text-danger opacity-75"></i>
+                            <div class="product-badge-overlay">
+                                <span class="badge-subtle badge-subtle-primary">
+                                    <i class="bi bi-controller"></i> Game PC
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3 d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mb-1 text-truncate product-name" title="Valorant Premium Account">
+                                <a href="product-detail.html" class="text-dark">Valorant Premium Account</a>
+                            </h5>
+                            <p class="text-muted small flex-grow-1 mb-3 product-desc" style="line-height: 1.5;">
+                                Akun premium Valorant dengan koleksi skin eksklusif dan semua agent terbuka.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-baseline mb-3">
+                                <div>
+                                    <span class="product-price-tag">Rp 25.000</span>
+                                    <span class="product-price-duration">/ 7 hari</span>
+                                </div>
+                                <span class="badge-subtle badge-subtle-dark">1 Minggu</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="product-detail.html" class="btn btn-light-custom btn-sm flex-grow-1">Detail</a>
+                                <a href="cart.html" class="btn btn-primary btn-sm flex-grow-1"><i class="bi bi-cart-plus"></i> + Sewa</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="col" data-product-item data-category="android">
+                    <div class="product-card">
+                        <div class="product-thumb-wrapper d-flex align-items-center justify-content-center bg-light">
+                            <i class="bi bi-phone fs-1 text-success opacity-75"></i>
+                            <div class="product-badge-overlay">
+                                <span class="badge-subtle badge-subtle-success">
+                                    <i class="bi bi-phone"></i> Android
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3 d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mb-1 text-truncate product-name" title="Minecraft Pocket Edition">
+                                <a href="product-detail.html" class="text-dark">Minecraft Pocket Edition</a>
+                            </h5>
+                            <p class="text-muted small flex-grow-1 mb-3 product-desc" style="line-height: 1.5;">
+                                Eksplorasi dunia tanpa batas dan bangun segala hal dari rumah sederhana hingga istana megah.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-baseline mb-3">
+                                <div>
+                                    <span class="product-price-tag">Rp 20.000</span>
+                                    <span class="product-price-duration">/ 7 hari</span>
+                                </div>
+                                <span class="badge-subtle badge-subtle-dark">1 Minggu</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="product-detail.html" class="btn btn-light-custom btn-sm flex-grow-1">Detail</a>
+                                <a href="cart.html" class="btn btn-primary btn-sm flex-grow-1"><i class="bi bi-cart-plus"></i> + Sewa</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="col" data-product-item data-category="android">
+                    <div class="product-card">
+                        <div class="product-thumb-wrapper d-flex align-items-center justify-content-center bg-light">
+                            <i class="bi bi-film fs-1 text-info opacity-75"></i>
+                            <div class="product-badge-overlay">
+                                <span class="badge-subtle badge-subtle-success">
+                                    <i class="bi bi-phone"></i> Android
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3 d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mb-1 text-truncate product-name" title="Netflix Premium Account">
+                                <a href="product-detail.html" class="text-dark">Netflix Premium Account</a>
+                            </h5>
+                            <p class="text-muted small flex-grow-1 mb-3 product-desc" style="line-height: 1.5;">
+                                Akun Netflix Premium 4K Ultra HD untuk streaming film dan serial TV favorit tanpa jeda iklan.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-baseline mb-3">
+                                <div>
+                                    <span class="product-price-tag">Rp 25.000</span>
+                                    <span class="product-price-duration">/ 7 hari</span>
+                                </div>
+                                <span class="badge-subtle badge-subtle-dark">1 Minggu</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="product-detail.html" class="btn btn-light-custom btn-sm flex-grow-1">Detail</a>
+                                <a href="cart.html" class="btn btn-primary btn-sm flex-grow-1"><i class="bi bi-cart-plus"></i> + Sewa</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="productsEmptyState" class="empty-state-box" style="display: none;">
+                <div class="empty-state-icon">
+                    <i class="bi bi-search"></i>
+                </div>
+                <h4 class="fw-bold mb-2">Produk Tidak Ditemukan</h4>
+                <p class="text-muted small mb-0">Coba gunakan kata kunci pencarian lain atau pilih kategori Semua.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modern Professional Footer -->
+    <footer class="footer-custom pt-5 pb-4 mt-auto">
+        <div class="container">
+            <div class="row g-4 justify-content-between">
+                <div class="col-lg-5 col-md-6">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span class="brand-icon-box"><i class="bi bi-controller"></i></span>
+                        <span class="fs-4 fw-bold text-white">SewaGame</span>
+                    </div>
+                    <p class="text-secondary small mb-3" style="max-width: 420px; line-height: 1.7;">
+                        Platform terpercaya penyewaan aplikasi game PC dan Android premium. Mainkan koleksi favorit Anda dengan lisensi resmi, aktivasi instan, dan harga paling terjangkau.
+                    </p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="footer-social-icon" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="Discord"><i class="bi bi-discord"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-6">
+                    <h6 class="text-white mb-3 text-uppercase fs-7 fw-bold tracking-wider">Navigasi</h6>
+                    <ul class="list-unstyled mb-0 d-flex flex-column gap-2 small">
+                        <li><a href="home.html" class="text-secondary hover-text-white">Beranda</a></li>
+                        <li><a href="products.html" class="text-secondary hover-text-white">Katalog Produk</a></li>
+                        <li><a href="cart.html" class="text-secondary hover-text-white">Keranjang</a></li>
+                        <li><a href="rentals.html" class="text-secondary hover-text-white">Riwayat Sewa</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="text-white mb-3 text-uppercase fs-7 fw-bold tracking-wider">Bantuan & Kontak</h6>
+                    <ul class="list-unstyled mb-0 d-flex flex-column gap-2 small text-secondary">
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="bi bi-envelope text-primary"></i>
+                            <span>support@sewagame.com</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="bi bi-whatsapp text-success"></i>
+                            <span>+62 812-3456-7890</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.08);">
+
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 small text-secondary">
+                <div>&copy; 2026 SewaGame. Seluruh hak cipta dilindungi undang-undang.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS & App JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
